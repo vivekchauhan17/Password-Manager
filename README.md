@@ -59,13 +59,6 @@ cd backend
 npm install
 ```
 
-Create a `.env` file inside the `backend` folder:
-
-```env
-MONGO_URI=mongodb://localhost:27017/
-PORT=3000
-```
-
 Then start the backend server:
 
 ```bash
