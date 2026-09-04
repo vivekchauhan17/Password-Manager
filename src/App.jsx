@@ -2,7 +2,6 @@ import { useState } from 'react'
 import './App.css'
 import Navbar from './component/Navbar'
 import Manager from './component/Manager'
-// import Footer from './components/Footer'
 import Footer from './component/footer'
 
 function App() {
