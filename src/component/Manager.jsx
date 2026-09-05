@@ -116,6 +116,7 @@ const Manager = () => {
             return;
         }
 
+        
         let passwords = JSON.parse(localStorage.getItem("passwords")) || [];
 
         if (form.id) {
