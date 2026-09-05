@@ -53,6 +53,27 @@ const Manager = () => {
 
 
     const savePassword = async () => {
+
+
+        // password form handeling
+
+
+        if (form.site.length < 1) {
+            toast("Website URL is required!");
+            return;
+        }
+
+        if (form.username.length <= 3) {
+            toast("Username must be at least 3 characters!");
+            return;
+        }
+
+        if (form.password.length <= 3) {
+            toast("Password must be at least 3 characters!");
+            return;
+        }
+
+
         if (form.site.length > 3 && form.username.length > 3 && form.password.length > 3) {
             const newPassword = { ...form, id: uuidv4() }; // generate ONE id, reuse it
 
@@ -119,6 +140,10 @@ const Manager = () => {
 
     }
 
+    const onClick = (e) => {
+
+    }
+
     return (
         <>
 
@@ -144,19 +169,27 @@ const Manager = () => {
                 <h1 className='text-4xl font-bold text-center  '>
                     <span className='text-green-500'>&lt;</span>
                     Pass
-                    <span className='text-green-500'>OP/&gt;</span>
+                    <span className='text-green-500'>Safe/&gt;</span>
                 </h1>
                 <p className='text-green-700 text-lg text-center '>Your Own Password Manager</p>
 
 
+                {/*enter the website url */}
+
+
                 <div className='flex flex-col p-4 text-black gap-8 items-center'>
                     <input value={form.site} onChange={handleChange} placeholder='Enter Website URL' className='rounded-full border border-green-500 w-full p-4 py-1' type='text' name='site' id='site' />
+
+                    {/* enter the username */}
                     <div className=' md:flex-row flex-col flex w-full justify-between  gap-8'>
                         <input value={form.username} onChange={handleChange} className='rounded-full border border-green-500 w-full p-4 py-1' type='text' name='username' id='username' placeholder='Enter Username' />
                         <div className="relative">
 
+                            {/* enter the password */}
 
                             <input ref={passwordRef} value={form.password} onChange={handleChange} placeholder='Enter Password' className="rounded-full border border-green-500 w-full p-4 py-1" type='password' name='password' id='password' />
+
+
                             <span className="absolute right-[3px] top-[3px] cursor-pointer " onClick=
                                 {showPassword}>
                                 <img ref={ref} className='p-1' width={30} src="/icons/eye.png" alt="eye" />
