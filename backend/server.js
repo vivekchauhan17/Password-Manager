@@ -4,10 +4,16 @@ const dotenv = require('dotenv')
 const { MongoClient } = require('mongodb');
 const bodyparser = require('body-parser')
 const cors = require('cors')
+const passport = require('./config/passport.js')
+const jwt = require("jsonwebtoken");
 
-// or as an es module:
-// import { MongoClient } from 'mongodb'
+
 dotenv.config()
+const app = express();
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true,
+}));
 
 // Connection URL
 const url = 'mongodb://localhost:27017';
@@ -16,10 +22,9 @@ const client = new MongoClient(url);
 
 // Database Name
 const dbName = 'passop';
-const app = express();
 const port = 3000;
 app.use(bodyparser.json())
-app.use(cors())
+// app.use(cors())
 
 client.connect();
 
@@ -37,8 +42,35 @@ app.post('/', async (req, res) => {
   const db = client.db(dbName);
   const collection = db.collection('Passwords');
   const findResult = await collection.insertOne(password);
-  res.send({success: true, result: findResult})
+  res.send({ success: true, result: findResult })
 });
+
+app.get(
+  "/Oauth/google",
+  passport.authenticate("google", {
+    scope: ["profile", "email"],
+    prompt: "select_account"
+  })
+);
+
+app.get(
+  "/Oauth/google/callback",
+  passport.authenticate("google", { session: false }),
+  (req, res) => {
+
+    const token = jwt.sign(
+      {
+        googleId: req.user.googleId,
+        email: req.user.email,
+        name: req.user.name
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: "1h" }
+    );
+
+    res.redirect(`http://localhost:5173`);
+  }
+);
 
 // delete a passwprd by id
 app.delete('/', async (req, res) => {
@@ -46,7 +78,7 @@ app.delete('/', async (req, res) => {
   const db = client.db(dbName);
   const collection = db.collection('Passwords');
   const findResult = await collection.deleteOne(password);
-  res.send({success: true, result: findResult})
+  res.send({ success: true, result: findResult })
 });
 
 
