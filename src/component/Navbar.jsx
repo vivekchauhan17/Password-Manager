@@ -4,13 +4,23 @@ const Navbar = () => {
   return (
     <nav className='bg-slate-800 text-white text-2xl '>
       <div className="mycontainer flex justify-between items-center px-4 h-14 py-5">
+        <a href="#">
+          <div className='logo font-bold text-white '>
+            <span className='text-green-500'>&lt;</span>
+            Pass
+            <span className='text-green-500'>Safe/&gt;</span>
+          </div>
 
-        <div className='logo font-bold text-white '>
+        </a>
+
+        {/* <div className='logo font-bold text-white '>
           <span className='text-green-500'>&lt;</span>
           Pass
           <span className='text-green-500'>Safe/&gt;</span>
 
-        </div>
+        </div> */}
+
+        
 
         <button className='text-white my-5 bg-green-700 rounded-full flex justify-between items-center ring-white ring-1 '>
           <img className='invert p-1 w-10 ' src="/icons/github.svg" alt="Github logo" />
