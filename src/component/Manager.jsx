@@ -18,6 +18,7 @@ const Manager = () => {
         setpasswordsArray(passwords)
     }
 
+    
     useEffect(() => {
         getPasswords()
 
