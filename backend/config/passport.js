@@ -25,7 +25,7 @@ passport.use(
 
 
                 console.log("Google user:", user);
-                callbackURL: process.env.GOOGLE_CALLBACK_URL
+                // callbackURL: process.env.GOOGLE_CALLBACK_URL
 
                 return done(null, user);
             } catch (error) {
