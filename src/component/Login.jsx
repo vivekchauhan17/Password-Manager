@@ -26,7 +26,7 @@ export default function Login() {
                 </div>
 
                 <form>
-                    <label>Email</label>
+                    <label>Email  Id</label>
 
                     <input
                         type="email"
