@@ -33,7 +33,7 @@ export default function Login() {
           <label className="block">Enter Password</label>
           <input
             type="password"
-            placeholder="••••••••"
+            placeholder="********"
             className="mb-5 mt-2 w-full rounded-md border border-gray-300 px-3 py-3 text-sm outline-none focus:border-gray-500"
           />
 
