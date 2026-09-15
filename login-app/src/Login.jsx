@@ -23,14 +23,14 @@ export default function Login() {
         </div>
 
         <form>
-          <label className="block">Email</label>
+          <label className="block">Email Id</label>
           <input
             type="email"
             placeholder="you@example.com"
             className="mb-5 mt-2 w-full rounded-md border border-gray-300 px-3 py-3 text-sm outline-none focus:border-gray-500"
           />
 
-          <label className="block">Password</label>
+          <label className="block">Enter Password</label>
           <input
             type="password"
             placeholder="••••••••"
