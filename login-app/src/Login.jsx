@@ -12,9 +12,9 @@ export default function Login() {
         <button
           type="button"
           onClick={handleGoogleLogin}
-          className="w-full rounded-md border border-gray-300 bg-white px-3 py-3 text-sm transition hover:bg-gray-50"
+          className="w-full rounded-md border border-gray-300 bg-slate-800 px-3 py-3 text-white transition hover:bg-slate-700"
         >
-          <span className="mr-2 font-bold">G</span>
+          <span className="mr-2 font-bold ">G</span>
           Continue with Google
         </button>
 
@@ -23,7 +23,7 @@ export default function Login() {
         </div>
 
         <form>
-          <label className="block">Email</label>
+          <label className="block">Email Id</label>
           <input
             type="email"
             placeholder="you@example.com"
@@ -33,7 +33,7 @@ export default function Login() {
           <label className="block">Password</label>
           <input
             type="password"
-            placeholder="••••••••"
+            placeholder="********"
             className="mb-5 mt-2 w-full rounded-md border border-gray-300 px-3 py-3 text-sm outline-none focus:border-gray-500"
           />
 
