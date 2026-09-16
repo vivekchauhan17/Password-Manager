@@ -14,7 +14,7 @@ export default function Login() {
           onClick={handleGoogleLogin}
           className="w-full  rounded-md border border-gray-400 bg-slate-800 px-3 py-3 text-white transition hover:bg-slate-700"
         >
-          <span className="mr-2 font-bold ">G </span>
+          <span className="mr-2 font-bold ">G</span>
           Continue with Google
         </button>
 
@@ -26,7 +26,7 @@ export default function Login() {
           <label className="block">Email Id</label>
           <input
             type="email"
-            placeholder="you@gmail.com"
+            placeholder="you@example.com"
             className="mb-5 mt-2 w-full rounded-md border border-gray-300 px-3 py-3 text-sm outline-none focus:border-gray-500"
           />
 
