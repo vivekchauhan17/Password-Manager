@@ -211,10 +211,10 @@ const Manager = () => {
 
                         <thead className='bg-green-800 text-white'>
                             <tr className='py-2 border border-white text-center w-32'>
-                                <th className='py-2'>Site</th>
-                                <th className='py-2'>Username</th>
-                                <th className='py-2'>Password</th>
-                                <th className='py-2'>Action</th>
+                                <th className='py-2'>Site </th>
+                                <th className='py-2'>Username </th>
+                                <th className='py-2'>Password </th>
+                                <th className='py-2'>Action </th>
                             </tr>
                         </thead>
                         <tbody className='bg-green-100'>

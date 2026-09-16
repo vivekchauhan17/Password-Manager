@@ -12,7 +12,7 @@ export default function Login() {
         <button
           type="button"
           onClick={handleGoogleLogin}
-          className="w-full  rounded-md border border-gray-300 bg-slate-800 px-3 py-3 text-white transition hover:bg-slate-700"
+          className="w-full  rounded-md border border-gray-400 bg-slate-800 px-3 py-3 text-white transition hover:bg-slate-700"
         >
           <span className="mr-2 font-bold ">G</span>
           Continue with Google
