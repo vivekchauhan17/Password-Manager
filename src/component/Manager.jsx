@@ -217,7 +217,7 @@ const Manager = () => {
                                 <th className='py-2'>Action</th>
                             </tr>
                         </thead>
-                        <tbody className='bg-green-1000'>
+                        <tbody className='bg-green-100'>
                             {passwordsArray.map((item, index) => {
                                 return <tr key={index}>
 
