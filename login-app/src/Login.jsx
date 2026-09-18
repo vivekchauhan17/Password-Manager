@@ -68,7 +68,7 @@ export default function Login() {
         </div>
 
         {/* Form Section */}
-        <div className="px-8 pb-10 pt-5">
+        <div className="px-8 pb-10 pt-5"
 
           {/* Google Login */}
           <button
