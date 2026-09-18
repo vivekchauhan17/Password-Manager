@@ -47,7 +47,6 @@ router.post("/login", async (req, res) => {
     console.log("Manual Login Email:", email);
     console.log("Manual Login Password:", password);
 
-    // Check if email and password were provided
     if (!email || !password) {
       return res.status(400).json({
         success: false,
@@ -55,54 +54,15 @@ router.post("/login", async (req, res) => {
       });
     }
 
-    // Connect to MongoDB
-    const { MongoClient } = require("mongodb");
-
-    const client = new MongoClient("mongodb://localhost:27017");
-
-    await client.connect();
-
-    const db = client.db("passop");
-
-    // We will store users in this collection
-    const usersCollection = db.collection("Users");
-
-    // Find user by email
-    const user = await usersCollection.findOne({ email });
-
-    if (!user) {
-      await client.close();
-
-      return res.status(401).json({
-        success: false,
-        message: "User not found",
-      });
-    }
-
-    // Compare password
-    const passwordMatch = await bcrypt.compare(password, user.password);
-
-    if (!passwordMatch) {
-      await client.close();
-
-      return res.status(401).json({
-        success: false,
-        message: "Incorrect password",
-      });
-    }
-
-    // Create JWT
+    // Create JWT using the entered login details
     const token = jwt.sign(
       {
-        userId: user._id,
-        email: user.email,
-        name: user.name,
+        email: email,
+        loginType: "manual",
       },
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
-
-    await client.close();
 
     console.log("Manual login successful");
 
@@ -111,6 +71,7 @@ router.post("/login", async (req, res) => {
       message: "Login successful",
       token,
     });
+
   } catch (error) {
     console.error("Manual login error:", error);
 

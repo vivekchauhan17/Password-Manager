@@ -1,15 +1,15 @@
 import { useState } from "react";
+
 export default function Login() {
-
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // Google Login
   const handleGoogleLogin = () => {
-
     window.location.href = "http://localhost:3000/Oauth/google";
   };
 
+  // Manual Email/Password Login
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -37,8 +37,10 @@ export default function Login() {
         return;
       }
 
+      // Save token
       localStorage.setItem("token", JSON.stringify(data.token));
 
+      // Redirect to main PassSafe frontend
       window.location.href = "http://localhost:5173";
     } catch (error) {
       console.error("Login error:", error);
@@ -54,7 +56,9 @@ export default function Login() {
 
         {/* Top Section */}
         <div className="px-8 pb-4 pt-10 text-center">
-          <div className=" text-green-500 mx-auto mb-5 flex h-14 w-full items-center justify-center rounded-2xl bg-slate-800 text-2xl font-bold shadow-lg">
+
+          {/* Logo */}
+          <div className="mx-auto mb-5 flex h-14 w-full items-center justify-center rounded-2xl bg-slate-800 text-2xl font-bold text-green-500 shadow-lg">
             Pass-Safe
           </div>
 
@@ -79,19 +83,25 @@ export default function Login() {
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-lg font-bold">
               G
             </span>
+
             Continue with Google
           </button>
+
           {/* Divider */}
           <div className="my-7 flex items-center">
             <div className="h-px flex-1 bg-gray-200"></div>
+
             <span className="px-4 text-xs font-medium uppercase tracking-wider text-gray-400">
               or continue with email
             </span>
+
             <div className="h-px flex-1 bg-gray-200"></div>
           </div>
 
-          {/* Email */}
+          {/* Email/Password Form */}
           <form onSubmit={handleLogin}>
+
+            {/* Email */}
             <div className="mb-5">
               <label
                 htmlFor="email"
@@ -106,32 +116,27 @@ export default function Login() {
                 placeholder="you@gmail.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
                 className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 placeholder-gray-400 outline-none transition-all duration-200 focus:border-gray-900 focus:bg-white focus:ring-2 focus:ring-gray-900/10"
               />
             </div>
 
             {/* Password */}
             <div className="mb-3">
-              <div className="mb-2 flex items-center justify-between">
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-semibold text-gray-700"
-                >
-                  Password
-                </label>
-
-                <button
-                  type="button"
-                  className="text-xs font-medium text-gray-500 transition hover:text-gray-900"
-                >
-                </button>
-              </div>
+              <label
+                htmlFor="password"
+                className="mb-2 block text-sm font-semibold text-gray-700"
+              >
+                Password
+              </label>
 
               <input
+                id="password"
                 type="password"
+                placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your password"
+                required
                 className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 placeholder-gray-400 outline-none transition-all duration-200 focus:border-gray-900 focus:bg-white focus:ring-2 focus:ring-gray-900/10"
               />
             </div>
@@ -143,6 +148,7 @@ export default function Login() {
             >
               Sign In
             </button>
+
           </form>
 
           {/* Bottom Text */}
@@ -156,8 +162,10 @@ export default function Login() {
               Privacy Policy
             </span>
           </p>
+
         </div>
       </div>
     </div>
   );
 }
+
