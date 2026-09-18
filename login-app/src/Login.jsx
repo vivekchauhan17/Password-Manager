@@ -81,7 +81,6 @@ export default function Login() {
             </span>
             Continue with Google
           </button>
-
           {/* Divider */}
           <div className="my-7 flex items-center">
             <div className="h-px flex-1 bg-gray-200"></div>
@@ -133,7 +132,7 @@ export default function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter your password"
-                className="..."
+                className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 placeholder-gray-400 outline-none transition-all duration-200 focus:border-gray-900 focus:bg-white focus:ring-2 focus:ring-gray-900/10"
               />
             </div>
 
