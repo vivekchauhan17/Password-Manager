@@ -44,35 +44,31 @@ export default function Login() {
       window.location.href = "http://localhost:5173";
     } catch (error) {
       console.error("Login error:", error);
-      alert("Unable to connect to backend");
+      alert("Try again after some time...");
     }
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950 px-4 py-8 font-sans">
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-emerald-200 via-green-100 to-teal-200 px-4 py-8 font-sans">
+
 
       {/* Login Card */}
-      <div className="w-full max-w-md overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-2xl">
+      <div className="relative w-full max-w-md overflow-hidden rounded-2xl border border-emerald-200/70 bg-gradient-to-br from-emerald-50 via-emerald-100/80 to-teal-100 shadow-2xl">
 
-        {/* Top Section */}
-        <div className="px-8 pb-4 pt-10 text-center">
+        <div className="relative w-full max-w-md overflow-hidden rounded-2xl border border-emerald-300/60 bg-gradient-to-br from-emerald-200 via-green-100 to-teal-200 px-8 pb-10 pt-10 shadow-2xl">
 
           {/* Logo */}
           <div className="mx-auto mb-5 flex h-14 w-full items-center justify-center rounded-2xl bg-slate-800 text-2xl font-bold text-green-500 shadow-lg">
             Pass-Safe
           </div>
 
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900">
+          <h1 className="text-center text-3xl font-bold tracking-tight text-gray-900">
             Welcome Back
           </h1>
 
-          <p className="mt-2 text-sm text-gray-500">
+          <p className="mb-9 mt-2 text-center text-sm text-gray-500">
             Sign in to continue to your account
           </p>
-        </div>
-
-        {/* Form Section */}
-        <div className="px-8 pb-10 pt-5">
 
           {/* Google Login */}
           <button
@@ -83,18 +79,15 @@ export default function Login() {
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-lg font-bold">
               G
             </span>
-
             Continue with Google
           </button>
 
           {/* Divider */}
           <div className="my-7 flex items-center">
             <div className="h-px flex-1 bg-gray-200"></div>
-
             <span className="px-4 text-xs font-medium uppercase tracking-wider text-gray-400">
               or continue with email
             </span>
-
             <div className="h-px flex-1 bg-gray-200"></div>
           </div>
 
@@ -103,13 +96,9 @@ export default function Login() {
 
             {/* Email */}
             <div className="mb-5">
-              <label
-                htmlFor="email"
-                className="mb-2 block text-sm font-semibold text-gray-700"
-              >
+              <label htmlFor="email" className="mb-2 block text-sm font-semibold text-gray-700">
                 Email Address
               </label>
-
               <input
                 id="email"
                 type="email"
@@ -123,13 +112,9 @@ export default function Login() {
 
             {/* Password */}
             <div className="mb-3">
-              <label
-                htmlFor="password"
-                className="mb-2 block text-sm font-semibold text-gray-700"
-              >
+              <label htmlFor="password" className="mb-2 block text-sm font-semibold text-gray-700">
                 Password
               </label>
-
               <input
                 id="password"
                 type="password"
@@ -148,7 +133,6 @@ export default function Login() {
             >
               Sign In
             </button>
-
           </form>
 
           {/* Bottom Text */}
@@ -156,13 +140,12 @@ export default function Login() {
             By continuing, you agree to our{" "}
             <span className="cursor-pointer font-medium text-gray-700 hover:underline">
               Terms of Service
-            </span>{" "}
+            </span>{"#"}
             and{" "}
             <span className="cursor-pointer font-medium text-gray-700 hover:underline">
               Privacy Policy
             </span>
           </p>
-
         </div>
       </div>
     </div>
