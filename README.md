@@ -34,7 +34,7 @@ With PassSafe, you can save a website URL, username, and password, and later vie
 * **CORS** – Allows the frontend and backend to communicate with each other.
 * **Dotenv** – Used to keep environment variables such as the MongoDB connection string separate from the code.
 
-## ⚙️ How to Run the Project
+## How to Run the Project
 
 ### Prerequisites
 
@@ -46,8 +46,8 @@ Before running PassSafe, make sure you have:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/passop.git
-cd passop
+git clone https://github.com/vivekchauhan17/Password-Manager.git
+cd PassSafe
 ```
 
 ### 2. Set Up the Backend
@@ -97,7 +97,7 @@ The frontend will normally be available at:
 http://localhost:5173
 ```
 
-## ⚠️ Important Note
+## Important Note
 
 This project was mainly made for **learning and educational purposes**.
 
@@ -112,13 +112,13 @@ For a production-ready password manager, additional security features would be n
 * Proper access control
 * Secure handling of environment variables and database credentials
 
-## 🤝 Contributing
+## Contributing
 
 If you have any suggestions, find a bug, or want to improve something, feel free to contribute to the project.
 
 You can open an issue or submit a pull request with your changes.
 
-## 👨‍💻 Author
+## Author
 
 **Vivek Kumar**
 
