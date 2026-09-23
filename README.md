@@ -1,10 +1,10 @@
-# PassOP – Your Own Password Manager 🔐
+# PassSafe – Your Own Password Manager
 
-PassOP is a simple password manager built with the **MERN stack**. I created this project to make it easier to save and manage website login details from one place.
+PassSafe is a simple password manager built with the **MERN stack**. I created this project to make it easier to save and manage website login details from one place.
 
-With PassOP, you can save a website URL, username, and password, and later view, edit, copy, or delete those credentials whenever you need them.
+With PassSafe, you can save a website URL, username, and password, and later view, edit, copy, or delete those credentials whenever you need them.
 
-## 🚀 Features
+## Features
 
 * **Save Passwords** – Store website URLs, usernames, and passwords.
 * **Add, Edit & Delete** – Manage your saved credentials using basic CRUD operations.
@@ -15,7 +15,7 @@ With PassOP, you can save a website URL, username, and password, and later view,
 * **Responsive Design** – The application works on both desktop and mobile screens.
 * **Animated Icons** – Uses Lord Icons to make the interface a little more interactive.
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 ### Frontend
 
@@ -38,7 +38,7 @@ With PassOP, you can save a website URL, username, and password, and later view,
 
 ### Prerequisites
 
-Before running PassOP, make sure you have:
+Before running PassSafe, make sure you have:
 
 * [Node.js](https://nodejs.org/) installed
 * [MongoDB](https://www.mongodb.com/try/download/community) installed and running
@@ -122,5 +122,5 @@ You can open an issue or submit a pull request with your changes.
 
 **Vivek Kumar**
 
-Thanks for checking out PassOP!
+Thanks for checking out PassSafe!
 This project was built as a practical way to learn and work with the MERN stack.
