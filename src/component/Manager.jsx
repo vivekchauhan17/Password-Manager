@@ -56,44 +56,52 @@ const Manager = () => {
     //   };
 
     const getPasswords = async () => {
+        const token = getToken();
+
+        // User is not logged in
+        if (!token) {
+            setPasswordsArray([]);
+            return;
+        }
+
         try {
             const response = await fetch("http://localhost:3000/", {
                 method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
                 cache: "no-store",
             });
 
-            console.log("STATUS:", response.status);
-            console.log("OK:", response.ok);
-            console.log("URL:", response.url);
-
-            const text = await response.text();
-
-            console.log("BACKEND RESPONSE:", text);
-
-            if (!response.ok && response.status !== 304) {
-                throw new Error(`Server error: ${response.status}`);
-            }
-
-            if (!text) {
+            if (response.status === 401) {
+                // Token is invalid or expired
+                localStorage.removeItem("token");
                 setPasswordsArray([]);
                 return;
             }
 
-            const passwords = JSON.parse(text);
+            if (!response.ok) {
+                throw new Error(`Server error: ${response.status}`);
+            }
 
-            console.log("PARSED PASSWORDS:", passwords);
+            const passwords = await response.json();
 
             setPasswordsArray(passwords);
         } catch (error) {
             console.error("GET PASSWORDS ERROR:", error);
+            setPasswordsArray([]);
         }
-
     };
 
 
-
     useEffect(() => {
-        getPasswords();
+        const token = getToken();
+
+        if (token) {
+            getPasswords();
+        } else {
+            setPasswordsArray([]);
+        }
     }, []);
 
     // Copy text
@@ -210,8 +218,17 @@ const Manager = () => {
         }
     };
 
+
     // Delete password
     const deletePassword = async (id) => {
+        const token = getToken();
+
+        // Check if user is logged in
+        if (!token) {
+            toast.error("Please login first!");
+            return;
+        }
+
         const confirmed = window.confirm(
             "Do you really want to delete this password?"
         );
@@ -224,6 +241,14 @@ const Manager = () => {
                 headers: getHeaders(),
                 body: JSON.stringify({ id }),
             });
+
+            // Token expired or invalid
+            if (response.status === 401) {
+                localStorage.removeItem("token");
+                setPasswordsArray([]);
+                toast.error("Session expired. Please login again!");
+                return;
+            }
 
             if (!response.ok) {
                 throw new Error("Could not delete password");
@@ -243,6 +268,7 @@ const Manager = () => {
             toast.error("Password could not be deleted");
         }
     };
+
 
     // Edit password
     const editPassword = (id) => {
