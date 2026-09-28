@@ -398,11 +398,11 @@ const Manager = () => {
                 {/* Password List */}
                 <div className="passwords">
                     <h2 className="font-bold text-2xl py-4">
-                        Your Passwords
+                        Your Passwords.....
                     </h2>
 
                     {passwordsArray.length === 0 && (
-                        <div>No passwords to show</div>
+                        <div>Please Login with Google to see and manage your saved passwords.</div>
                     )}
 
                     {passwordsArray.length !== 0 && (

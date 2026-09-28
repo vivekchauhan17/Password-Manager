@@ -4,6 +4,7 @@ import { useState } from "react";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setname] = useState("");
 
   // Google Login
   const handleGoogleLogin = () => {
@@ -63,7 +64,7 @@ export default function Login() {
           <h1 className="text-center text-3xl font-bold tracking-tight text-gray-900">
             Welcome Back
           </h1>
-          
+
 
           <p className="mb-5 mt-3 text-center text-sm text-gray-500">
             Sign in to continue to your account
@@ -95,6 +96,27 @@ export default function Login() {
 
           {/* Email/Password Form */}
           <form onSubmit={handleLogin}>
+
+            {/* Name details */}
+            <div className="mb-5">
+              <label
+                htmlFor="Name"
+                className="mb-2 block text-sm font-semibold text-gray-700"
+              >
+                Name
+              </label>
+
+              <input
+                id="name"
+                type="input"
+                placeholder="Enter your name"
+                value={name}
+                onChange={(e) => setname(e.target.value)}
+                required
+                className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 placeholder-gray-400 outline-none transition-all duration-200 focus:border-gray-900 focus:bg-white focus:ring-2 focus:ring-gray-900/10"
+              />
+            </div>
+
 
             {/* Email */}
             <div className="mb-5">
