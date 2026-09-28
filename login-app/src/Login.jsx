@@ -64,7 +64,7 @@ export default function Login() {
             Welcome Back
           </h1>
 
-          <p className="mb-9 mt-2 text-center text-sm text-gray-500">
+          <p className="mb-5 mt-3 text-center text-sm text-gray-500">
             Sign in to continue to your account
           </p>
 
