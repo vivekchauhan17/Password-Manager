@@ -73,7 +73,7 @@ router.post("/login", async (req, res) => {
       token,
 
     });
-    
+
 
   } catch (error) {
     console.error("Manual login error:", error);
