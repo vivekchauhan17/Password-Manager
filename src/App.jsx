@@ -6,7 +6,7 @@ import Footer from './component/footer'
 function App() {
 
   const handleLogin = () => {
-    window.location.href = "http://localhost:5174"
+    window.location.href = "http://localhost:5173"
   }
 
   return (
