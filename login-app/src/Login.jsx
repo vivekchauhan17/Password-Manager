@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 
 export default function Login() {
@@ -12,9 +13,6 @@ export default function Login() {
   // Manual Email/Password Login
   const handleLogin = async (e) => {
     e.preventDefault();
-
-    console.log("Email:", email);
-    console.log("Password:", password);
 
     try {
       const response = await fetch("http://localhost:3000/Oauth/login", {
@@ -38,10 +36,10 @@ export default function Login() {
       }
 
       // Save token
-      localStorage.setItem("token", JSON.stringify(data.token));
+      localStorage.setItem("token", data.token);
 
       // Redirect to main PassSafe frontend
-      window.location.href = "http://localhost:5173";
+      window.location.replace("http://localhost:5173");
     } catch (error) {
       console.error("Login error:", error);
       alert("Try again after some time...");
@@ -50,7 +48,6 @@ export default function Login() {
 
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-emerald-200 via-green-100 to-teal-200 px-4 py-8 font-sans">
-
 
       {/* Login Card */}
       <div className="relative w-full max-w-md overflow-hidden rounded-2xl border border-emerald-200/70 bg-gradient-to-br from-emerald-50 via-emerald-100/80 to-teal-100 shadow-2xl">
@@ -62,6 +59,7 @@ export default function Login() {
             Pass-Safe
           </div>
 
+          {/* Heading */}
           <h1 className="text-center text-3xl font-bold tracking-tight text-gray-900">
             Welcome Back
           </h1>
@@ -79,15 +77,18 @@ export default function Login() {
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-lg font-bold">
               G
             </span>
+
             Continue with Google
           </button>
 
           {/* Divider */}
           <div className="my-7 flex items-center">
             <div className="h-px flex-1 bg-gray-200"></div>
+
             <span className="px-4 text-xs font-medium uppercase tracking-wider text-gray-400">
               or continue with email
             </span>
+
             <div className="h-px flex-1 bg-gray-200"></div>
           </div>
 
@@ -96,9 +97,13 @@ export default function Login() {
 
             {/* Email */}
             <div className="mb-5">
-              <label htmlFor="email" className="mb-2 block text-sm font-semibold text-gray-700">
+              <label
+                htmlFor="email"
+                className="mb-2 block text-sm font-semibold text-gray-700"
+              >
                 Email Address
               </label>
+
               <input
                 id="email"
                 type="email"
@@ -112,9 +117,13 @@ export default function Login() {
 
             {/* Password */}
             <div className="mb-3">
-              <label htmlFor="password" className="mb-2 block text-sm font-semibold text-gray-700">
+              <label
+                htmlFor="password"
+                className="mb-2 block text-sm font-semibold text-gray-700"
+              >
                 Password
               </label>
+
               <input
                 id="password"
                 type="password"
@@ -140,7 +149,7 @@ export default function Login() {
             By continuing, you agree to our{" "}
             <span className="cursor-pointer font-medium text-gray-700 hover:underline">
               Terms of Service
-            </span>{"#"}
+            </span>{" "}
             and{" "}
             <span className="cursor-pointer font-medium text-gray-700 hover:underline">
               Privacy Policy
@@ -151,4 +160,3 @@ export default function Login() {
     </div>
   );
 }
-

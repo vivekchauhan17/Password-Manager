@@ -8,6 +8,7 @@ const router = express.Router();
 // =========================
 // Google Login
 // =========================
+
 router.get(
   "/google",
   passport.authenticate("google", {
@@ -81,5 +82,7 @@ router.post("/login", async (req, res) => {
     });
   }
 });
+console.log("success auth")
+
 
 module.exports = router;
