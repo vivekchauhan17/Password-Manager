@@ -5,6 +5,8 @@ PassSafe is a simple password manager built with the **MERN stack**. I created t
 
 With PassSafe, you can save a website URL, username, and password, and later view, edit, copy, or delete those credentials whenever you need them.
 
+<img src="Frontend.png" alt="Project Screenshot" >
+
 ## Features
 
 * **Save Passwords** – Store website URLs, usernames, and passwords.
@@ -104,14 +106,6 @@ This project was mainly made for **learning and educational purposes**.
 
 At the moment, passwords are stored as plain text, so this project should **not be used to store real or sensitive passwords** in a production environment.
 
-For a production-ready password manager, additional security features would be needed, such as:
-
-* User authentication
-* JWT/session-based authorization
-* Password encryption or secure hashing where appropriate
-* HTTPS
-* Proper access control
-* Secure handling of environment variables and database credentials
 
 ## Contributing
 
