@@ -22,6 +22,7 @@ export default function Login() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          name,
           email,
           password,
         }),
@@ -31,16 +32,16 @@ export default function Login() {
 
       console.log("Backend response:", data);
 
-      if (!response.ok) {
+      if (!response.ok || !data.success) {
         alert(data.message || "Login failed");
         return;
       }
 
-      // Save token
-      localStorage.setItem("token", data.token);
+      // Send the token to the main app (5173)
+      window.location.replace(
+        `http://localhost:5173?token=${encodeURIComponent(data.token)}`
+      );
 
-      // Redirect to main PassSafe frontend
-      window.location.replace("http://localhost:5173");
     } catch (error) {
       console.error("Login error:", error);
       alert("Try again after some time...");

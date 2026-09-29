@@ -4,41 +4,56 @@ const Navbar = () => {
   const [user, setUser] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
+  // Read JWT and set user
+  const loadUser = () => {
+    const token = localStorage.getItem("token");
+
+    console.log("Navbar token:", token);
+
+    if (!token) {
+      setUser(null);
+      return;
+    }
+
+    try {
+      const payload = JSON.parse(atob(token.split(".")[1]));
+
+      console.log("Navbar user:", payload);
+
+      setUser(payload);
+    } catch (error) {
+      console.error("Invalid token:", error);
+      localStorage.removeItem("token");
+      setUser(null);
+    }
+  };
+
   useEffect(() => {
+    // Check localStorage when Navbar loads
+    loadUser();
+
+    // Handle Google login token from URL
     const params = new URLSearchParams(window.location.search);
-    const token = params.get("token");
+    const urlToken = params.get("token");
 
-    if (token) {
+    if (urlToken) {
       try {
-        // Decode JWT
-        const payload = JSON.parse(atob(token.split(".")[1]));
+        const payload = JSON.parse(atob(urlToken.split(".")[1]));
 
-        // Save user
+        console.log("Google login user:", payload);
+
+        // Save Google token
+        localStorage.setItem("token", urlToken);
+
+        // Set user
         setUser(payload);
 
-        // Save token
-        localStorage.setItem("token", token);
-
-        // Remove ?token=... from URL
+        // Remove token from URL
         window.history.replaceState({}, document.title, "/");
       } catch (error) {
-        console.error("Invalid token:", error);
-      }
-    } else {
-      // Check if user is already logged in
-      const savedToken = localStorage.getItem("token");
-
-      if (savedToken) {
-        try {
-          const payload = JSON.parse(
-            atob(savedToken.split(".")[1])
-          );
-
-          setUser(payload);
-        } catch (error) {
-          console.error("Invalid saved token:", error);
-          localStorage.removeItem("token");
-        }
+        console.error("Invalid Google token:", error);
+        localStorage.removeItem("token");
+        setUser(null);
       }
     }
   }, []);
@@ -50,16 +65,10 @@ const Navbar = () => {
 
   // Sign out
   const handleLogout = () => {
-    // Remove JWT
     localStorage.removeItem("token");
-
-    // Remove user from state
     setUser(null);
-
-    // Close dropdown
     setDropdownOpen(false);
 
-    // Redirect to main app
     window.location.href = "http://localhost:5173";
   };
 
@@ -92,16 +101,21 @@ const Navbar = () => {
               onClick={() => setDropdownOpen(!dropdownOpen)}
               className="rounded-full bg-green-700 px-5 py-2 text-base font-bold text-white ring-1 ring-white transition-all duration-200 hover:bg-green-600 active:scale-95"
             >
-              {user.name}
+              {user.name || user.email}
             </button>
 
             {/* Dropdown */}
             {dropdownOpen && (
               <div className="absolute right-0 mt-2 w-48 rounded-lg bg-white py-2 text-base text-gray-800 shadow-lg">
 
-                {/* Name - does nothing */}
+                {/* Name */}
                 <div className="cursor-default px-4 py-2 font-semibold">
-                  {user.name}
+                  {user.name || "User"}
+                </div>
+
+                {/* Email */}
+                <div className="px-4 pb-2 text-sm text-gray-500">
+                  {user.email}
                 </div>
 
                 {/* Sign out */}
@@ -114,7 +128,6 @@ const Navbar = () => {
 
               </div>
             )}
-
           </div>
         )}
 
