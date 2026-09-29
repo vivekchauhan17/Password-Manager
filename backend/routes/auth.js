@@ -26,12 +26,12 @@ router.get(
   (req, res) => {
     const token = jwt.sign(
       {
+        name: req.user.name,
         googleId: req.user.googleId,
         email: req.user.email,
-        name: req.user.name,
+        
       },
       process.env.JWT_SECRET,
-      { expiresIn: "1h" }
     );
 
     res.redirect(`http://localhost:5173?token=${token}`);
@@ -43,10 +43,11 @@ router.get(
 // =========================
 router.post("/login", async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { name ,email, password } = req.body;
 
+    console.log("Manual Login Name:", name);
     console.log("Manual Login Email:", email);
-    console.log("Manual Login Password:", password);
+    // console.log("Manual Login Password:", password);
 
     if (!email || !password) {
       return res.status(400).json({
@@ -58,6 +59,7 @@ router.post("/login", async (req, res) => {
     // Create JWT using the entered login details
     const token = jwt.sign(
       {
+        name: name,
         email: email,
         loginType: "manual",
       },
