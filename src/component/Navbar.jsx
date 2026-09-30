@@ -87,10 +87,24 @@ const Navbar = () => {
 
         {/* Login / User */}
         {!user ? (
+
+          // <img
+          //  className="flex p-1 h-9 w-9 "
+          //  src="/icons/google-icon.png" alt="Google" />
           <button
             onClick={handleLogin}
-            className="rounded-full bg-green-700 px-5 py-2 text-base font-bold text-white ring-1 ring-white transition-all duration-200 hover:bg-green-600 active:scale-95"
+            className="flex items-center gap-2 rounded-full bg-green-700 px-5 py-2 text-base font-bold text-white ring-1 ring-white transition-all duration-200 hover:bg-green-600 active:scale-95"
+
           >
+
+            <img 
+            src="/icons/google-icon.png"
+            alt="google"
+            className="h-5 w-5"
+            
+            />
+
+
             Login With Google
           </button>
         ) : (
