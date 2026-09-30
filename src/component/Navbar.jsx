@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [user, setUser] = useState(null);
@@ -59,8 +60,15 @@ const Navbar = () => {
   }, []);
 
   // Go to login page
+  // const handleLogin = () => {
+  //   window.location.href = "http://localhost:5174";
+  // };
+
+  //chat* function to merge the login-app and frontend
+  const navigate = useNavigate();
+
   const handleLogin = () => {
-    window.location.href = "http://localhost:5174";
+    navigate("/login");
   };
 
   // Sign out
@@ -97,14 +105,12 @@ const Navbar = () => {
 
           >
 
-            <img 
-            src="/icons/google-icon.png"
-            alt="google"
-            className="h-5 w-5"
-            
+            <img
+              src="/icons/google-icon.png"
+              alt="google"
+              className="h-5 w-5"
+
             />
-
-
             Login With Google
           </button>
         ) : (

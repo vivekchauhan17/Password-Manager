@@ -1,6 +1,9 @@
 
 import { useState } from "react";
 
+
+
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -8,7 +11,7 @@ export default function Login() {
 
   // Google Login
   const handleGoogleLogin = () => {
-    window.location.href = "http://localhost:3000/Oauth/google";
+    window.location.href = "/Oauth/google";
   };
 
   // Manual Email/Password Login
