@@ -8,10 +8,6 @@
     "backend": {
       "root": "backend",
       "framework": "express"
-    },
-    "login-app": {
-      "root": "login-app",
-      "framework": "vite"
     }
   },
   "rewrites": [
