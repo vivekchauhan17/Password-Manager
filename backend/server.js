@@ -21,6 +21,7 @@ app.use(
     origin: [
       "http://localhost:5173",
       "http://localhost:5174",
+      "https://password-manager-amber-seven.vercel.app",
 
       // Replace this with your actual Vercel frontend URL
       "https://your-frontend.vercel.app"
