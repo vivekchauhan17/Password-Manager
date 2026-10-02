@@ -53,6 +53,7 @@ client.connect();
 // =========================
 
 app.use("/Oauth", authRoutes);
+app.use(passport.initialize());
 
 
 // =========================
