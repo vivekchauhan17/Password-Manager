@@ -43,7 +43,7 @@ const url = "mongodb://localhost:27017";
 const client = new MongoClient(url);
 
 const dbName = "passop";
-const port = 3000;
+// const port = 3000;
 
 client.connect();
 
@@ -119,6 +119,12 @@ console.log(process.env.MONGO_URI);
 // Start Server
 // =========================
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+// app.listen(port, () => {
+//   console.log(`Example app listening on port ${port}`);
+// });
+
+const port = process.env.PORT || 3000;
+
+app.listen(port, "0.0.0.0", () => {
+  console.log(`Server running on 0.0.0.0:${port}`);
 });
