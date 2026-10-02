@@ -18,6 +18,12 @@
       }
     },
     {
+      "source": "/Oauth/(.*)",
+      "destination": {
+        "service": "backend"
+      }
+    },
+    {
       "source": "/(.*)",
       "destination": {
         "service": "app"

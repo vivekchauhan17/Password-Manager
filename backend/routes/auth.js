@@ -29,12 +29,13 @@ router.get(
         name: req.user.name,
         googleId: req.user.googleId,
         email: req.user.email,
-        
+
       },
       process.env.JWT_SECRET,
     );
 
-    res.redirect(`http://localhost:5173?token=${token}`);
+    // res.redirect(`http://localhost:5173?token=${token}`);
+    res.redirect(`${process.env.FRONTEND_URL}?token=${token}`);
   }
 );
 
@@ -43,7 +44,7 @@ router.get(
 // =========================
 router.post("/login", async (req, res) => {
   try {
-    const { name ,email, password } = req.body;
+    const { name, email, password } = req.body;
 
     console.log("Manual Login Name:", name);
     console.log("Manual Login Email:", email);
