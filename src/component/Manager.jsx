@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const Manager = () => {
     const ref = useRef(null);
@@ -65,7 +66,7 @@ const Manager = () => {
         }
 
         try {
-            const response = await fetch("http://localhost:3000/", {
+            const response = await fetch(`${API_URL}/`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -166,7 +167,7 @@ const Manager = () => {
             // If editing an existing password,
             // delete the old record first.
             if (form.id) {
-                const deleteResponse = await fetch("http://localhost:3000/", {
+                const deleteResponse = await fetch(`${API_URL}/`, {
                     method: "DELETE",
                     headers: getHeaders(),
                     body: JSON.stringify({
@@ -180,7 +181,7 @@ const Manager = () => {
             }
 
             // Save password
-            const response = await fetch("http://localhost:3000/", {
+            const response = await fetch(`${API_URL}/`, {
                 method: "POST",
                 headers: getHeaders(),
                 body: JSON.stringify(passwordData),
@@ -236,7 +237,7 @@ const Manager = () => {
         if (!confirmed) return;
 
         try {
-            const response = await fetch("http://localhost:3000/", {
+            const response = await fetch(`${API_URL}/`, {
                 method: "DELETE",
                 headers: getHeaders(),
                 body: JSON.stringify({ id }),
