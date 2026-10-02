@@ -39,8 +39,9 @@ app.use(passport.initialize());
 // MongoDB
 // =========================
 
-const url = "mongodb://localhost:27017";
-const client = new MongoClient(url);
+// const url = "mongodb://localhost:27017";
+// const client = new MongoClient(url);
+const client = new MongoClient(process.env.MONGO_URI);
 
 const dbName = "passop";
 // const port = 3000;
