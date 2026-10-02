@@ -10,9 +10,10 @@ export default function Login() {
   const [name, setname] = useState("");
 
   // Google Login
-  const handleGoogleLogin = () => {
-    window.location.href = "/Oauth/google";
-  };
+const handleGoogleLogin = () => {
+  window.location.href =
+    "https://password-manager-backend-ei1s.onrender.com/Oauth/google";
+};
 
   // Manual Email/Password Login
   const handleLogin = async (e) => {
