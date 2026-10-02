@@ -21,6 +21,9 @@ app.use(
     origin: [
       "http://localhost:5173",
       "http://localhost:5174",
+
+      // Replace this with your actual Vercel frontend URL
+      "https://your-frontend.vercel.app"
     ],
     credentials: true,
   })
@@ -39,24 +42,9 @@ app.use(passport.initialize());
 // MongoDB
 // =========================
 
-// const url = "mongodb://localhost:27017";
-// const client = new MongoClient(url);
-
-const dotenv = require('dotenv');
-const { MongoClient } = require('mongodb');
-
 const client = new MongoClient(process.env.MONGO_URI);
 
-const port = process.env.PORT || 3000;
-
-app.listen(port, "0.0.0.0", () => {
-  console.log(`Server running on 0.0.0.0:${port}`);
-});
-
 const dbName = "passop";
-// const port = 3000;
-
-client.connect();
 
 
 // =========================
@@ -64,7 +52,6 @@ client.connect();
 // =========================
 
 app.use("/Oauth", authRoutes);
-app.use(passport.initialize());
 
 
 // =========================
@@ -72,12 +59,21 @@ app.use(passport.initialize());
 // =========================
 
 app.get("/", async (req, res) => {
-  const db = client.db(dbName);
-  const collection = db.collection("Passwords");
+  try {
+    const db = client.db(dbName);
+    const collection = db.collection("Passwords");
 
-  const findResult = await collection.find({}).toArray();
+    const findResult = await collection.find({}).toArray();
 
-  res.json(findResult);
+    res.json(findResult);
+  } catch (error) {
+    console.error("Error fetching passwords:", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Database error",
+    });
+  }
 });
 
 
@@ -86,17 +82,26 @@ app.get("/", async (req, res) => {
 // =========================
 
 app.post("/", async (req, res) => {
-  const password = req.body;
+  try {
+    const password = req.body;
 
-  const db = client.db(dbName);
-  const collection = db.collection("Passwords");
+    const db = client.db(dbName);
+    const collection = db.collection("Passwords");
 
-  const findResult = await collection.insertOne(password);
+    const findResult = await collection.insertOne(password);
 
-  res.send({
-    success: true,
-    result: findResult,
-  });
+    res.send({
+      success: true,
+      result: findResult,
+    });
+  } catch (error) {
+    console.error("Error saving password:", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Database error",
+    });
+  }
 });
 
 
@@ -105,37 +110,35 @@ app.post("/", async (req, res) => {
 // =========================
 
 app.delete("/", async (req, res) => {
-  const password = req.body;
+  try {
+    const password = req.body;
 
-  const db = client.db(dbName);
-  const collection = db.collection("Passwords");
+    const db = client.db(dbName);
+    const collection = db.collection("Passwords");
 
-  const findResult = await collection.deleteOne(password);
+    const findResult = await collection.deleteOne(password);
 
-  res.send({
-    success: true,
-    result: findResult,
-  });
+    res.send({
+      success: true,
+      result: findResult,
+    });
+  } catch (error) {
+    console.error("Error deleting password:", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Database error",
+    });
+  }
 });
-
-
-// =========================
-// Check MongoDB URI
-// =========================
-
-console.log(process.env.MONGO_URI);
 
 
 // =========================
 // Start Server
 // =========================
 
-// app.listen(port, () => {
-//   console.log(`Example app listening on port ${port}`);
-// });
+const port = process.env.PORT || 3000;
 
-// const port = process.env.PORT || 3000;
-
-// app.listen(port, "0.0.0.0", () => {
-//   console.log(`Server running on 0.0.0.0:${port}`);
-// });
+app.listen(port, "0.0.0.0", () => {
+  console.log(`Server running on 0.0.0.0:${port}`);
+});
