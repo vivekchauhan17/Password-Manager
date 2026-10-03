@@ -10,27 +10,43 @@ export default function Login() {
   const [name, setname] = useState("");
 
   // Google Login
-const handleGoogleLogin = () => {
-  window.location.href =
-    "https://password-manager-backend-ei1s.onrender.com/Oauth/google";
-};
+  const handleGoogleLogin = () => {
+    window.location.href =
+      "https://password-manager-backend-ei1s.onrender.com/Oauth/google";
+  };
 
   // Manual Email/Password Login
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3000/Oauth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          password,
-        }),
-      });
+      // const response = await fetch("http://localhost:3000/Oauth/login", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({
+      //     name,
+      //     email,
+      //     password,
+      //   }),
+      // });
+
+      const response = await fetch(
+        "https://password-manager-backend-ei1s.onrender.com/Oauth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            password,
+          }),
+        }
+      );
+
 
       const data = await response.json();
 
