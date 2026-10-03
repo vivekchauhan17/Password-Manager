@@ -1,7 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
+// const API_URL = import.meta.env.VITE_API_URL;
+
 const API_URL = import.meta.env.VITE_API_URL;
+
+console.log("API_URL =", API_URL);
 
 const Manager = () => {
     const ref = useRef(null);
