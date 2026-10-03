@@ -43,7 +43,7 @@ const handleGoogleLogin = () => {
 
       // Send the token to the main app (5173)
       window.location.replace(
-        `http://localhost:5173?token=${encodeURIComponent(data.token)}`
+        `https://password-manager-amber-seven.vercel.app/?token=${encodeURIComponent(data.token)}`
       );
 
     } catch (error) {
