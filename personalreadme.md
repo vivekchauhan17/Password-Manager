@@ -1,6 +1,0 @@
-project is live but when i swwitch branch in vs terminal to main then check git status
-then that show commit behind recheck this also make all live and the resume is working not yet...........
-
-
-
-vercel pr env ko update krna hai
