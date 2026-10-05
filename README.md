@@ -2,6 +2,10 @@
 
 PassSafe is a simple password manager built with the **MERN stack**. I created this project to make it easier to save and manage website login details from one place.
 
+Live Demo: The project is deployed and available at the link below. You can visit it and check out the live project:
+
+https://password-manager-amber-seven.vercel.app/
+
 
 With PassSafe, you can save a website URL, username, and password, and later view, edit, copy, or delete those credentials whenever you need them.
 
@@ -50,7 +54,7 @@ Before running PassSafe, make sure you have:
 
 ```bash
 git clone https://github.com/vivekchauhan17/Password-Manager.git
-cd PassSafe
+cd Password-Manager
 ```
 
 ### 2. Set Up the Backend
