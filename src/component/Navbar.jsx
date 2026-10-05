@@ -80,7 +80,7 @@ const Navbar = () => {
       <div className="mycontainer flex justify-between items-center px-4 h-14 py-5">
 
         {/* Logo */}
-        <a href="#">
+        <a href="https://password-manager-amber-seven.vercel.app">
           <div className="logo font-bold text-white">
             <span className="text-green-500">&lt;</span>
             Pass
