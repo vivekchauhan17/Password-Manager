@@ -59,12 +59,7 @@ const Navbar = () => {
     }
   }, []);
 
-  // Go to login page
-  // const handleLogin = () => {
-  //   window.location.href = "http://localhost:5174";
-  // };
 
-  //chat* function to merge the login-app and frontend
   const navigate = useNavigate();
 
   const handleLogin = () => {
@@ -77,7 +72,7 @@ const Navbar = () => {
     setUser(null);
     setDropdownOpen(false);
 
-    window.location.href = "http://localhost:5173";
+    window.location.href = "https://password-manager-amber-seven.vercel.app";
   };
 
   return (

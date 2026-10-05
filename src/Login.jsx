@@ -57,7 +57,7 @@ export default function Login() {
         return;
       }
 
-      // Send the token to the main app (5173)
+      // Send the token to the main app
       window.location.replace(
         `https://password-manager-amber-seven.vercel.app/?token=${encodeURIComponent(data.token)}`
       );
